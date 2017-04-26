@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
+use App\Survey;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,16 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+//        $cs = User::find(1)->surveys;
+//        dd($cs);
+
+//        $cs = User::find(1)->surveys;
+//
+//        foreach($cs as $c){
+//            dd($c->questions);
+//        }
+
         return view('home');
     }
 }
