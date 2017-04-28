@@ -17,7 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->integer('survey_id');
             $table->string('label');
-            $table->string('answer');
+            $table->string('multi_id');
             $table->timestamps();
         });
     }
