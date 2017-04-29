@@ -18,7 +18,7 @@ class CreateSurveysTable extends Migration
             $table->integer('company_id');
             $table->string('title');
             $table->integer('age_range_min')->nullable();
-            $table->integer('age_rage_max')->nullable();
+            $table->integer('age_range_max')->nullable();
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
             $table->timestamps();

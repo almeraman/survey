@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     protected $fillable = [
-        'label', 'answer',
+        'label',
     ];
+
+    public function multi_choice()
+    {
+        return $this->hasMany('App\Multi_choice');
+    }
+
 }

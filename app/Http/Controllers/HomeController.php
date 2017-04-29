@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Question;
 use App\Survey;
 use App\User;
 use Illuminate\Http\Request;
@@ -29,7 +30,8 @@ class HomeController extends Controller
 
 //        $cs = User::find(1)->surveys;
 //        dd($cs);
-
+//        $q = Question::find(4);
+//        dd($q->multi_choice);
 //        $cs = User::find(1)->surveys;
 //
 //        foreach($cs as $c){
