@@ -6,6 +6,7 @@ use App\Company;
 use App\Question;
 use App\Survey;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,17 +28,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $companies = Company::all();
+        $now = Carbon::now()->format('Y-m-d H:i:s');
 
-//        $cs = User::find(1)->surveys;
-//        dd($cs);
-//        $q = Question::find(4);
-//        dd($q->multi_choice);
-//        $cs = User::find(1)->surveys;
-//
-//        foreach($cs as $c){
-//            dd($c->questions);
+//        foreach($companies as $company){
+//            dd($company->surveys);
 //        }
 
-        return view('home');
+        return view('surveys.survey-home', compact('companies', 'now'));
     }
 }

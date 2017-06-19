@@ -29,7 +29,7 @@ class User extends Authenticatable
 
     public function surveys()
     {
-        return $this->hasMany('App\Survey');
+        return $this->belongsToMany('App\Survey');
     }
 
 }
