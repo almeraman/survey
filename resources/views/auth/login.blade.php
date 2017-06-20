@@ -2,7 +2,7 @@
 
 @section('survey_heading', 'Login')
 
-@section('survey_content')
+@section('content')
     <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}
 

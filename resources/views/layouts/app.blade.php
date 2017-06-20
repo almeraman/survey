@@ -89,7 +89,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">@yield('survey_heading')</div>
                         <div class="panel-body">
-                            @yield('survey_content')
+                            @yield('content')
                         </div>
                     </div>
                 </div>

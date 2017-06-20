@@ -10,7 +10,7 @@ class SurveyController extends Controller
 {
 
     public function getMySurvey(){
-        dd(Auth::user()->id);
+        //dd(Auth::user()->surveys->first()->questions->find(4)->multi_choice);
     }
 
     public function getSurvey(Request $request){
@@ -32,8 +32,8 @@ class SurveyController extends Controller
 
     public function postSurvey(Request $request){
         $survey_id = $request->input('id');
-        $user_id = Auth::user()->id;
-        //$user_id->surveys()->attach($survey_id);
+        $user_id = Auth::user();
+        $user_id->surveys()->attach($survey_id);
     }
 
 }

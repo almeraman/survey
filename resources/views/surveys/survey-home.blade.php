@@ -2,7 +2,7 @@
 
 @section('survey_heading', 'Available Surveys')
 
-@section('survey_content')
+@section('content')
     @foreach($companies as $company)
         <h4><strong>{{$company->name}}</strong></h4>
         <ul>
