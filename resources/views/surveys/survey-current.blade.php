@@ -14,9 +14,10 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Question <span id="q_num"> {{$count}} </span> of {{$num_questions}}</div>
                     <div class="panel-body">
+                        {{--<div class="form-group{{ $errors->has('answer_'.$question->id) ? ' has-error' : '' }}">--}}
                         <h3><strong>Question:</strong></h3><h4>{{$question->label}}</h4>
                         @if($question->multi_id == null)
-                            <h3><strong>Answer:</strong></h3><input type='text' id='answer' class='form-control' name='answer_{{$question->id}}' required>
+                            <h3><strong>Answer:</strong></h3><input type='text' id='answer' class='form-control' name='answer_{{$question->id}}'>
                         @else
                             <h3><strong>Answer:</strong></h3>
                             <div>
@@ -25,6 +26,12 @@
                                 @endforeach
                             </div>
                         @endif
+                            @if ($errors->has('answer_'.$question->id))
+                                <span class="help-block">
+                                <strong style="color: red">{{ $errors->first('answer_'.$question->id) }}</strong>
+                                </span>
+                            @endif
+                        {{--</div>--}}
                     </div>
                 </div>
             </div>

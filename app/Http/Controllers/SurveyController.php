@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\Array_;
+use App\Http\Requests\AnswersRequest;
 
 class SurveyController extends Controller
 {
@@ -55,7 +56,7 @@ class SurveyController extends Controller
         return view('surveys.survey-current', compact('current_survey', 'num_questions'));
     }
 
-    public function postAnswer(Request $request){
+    public function postAnswer(AnswersRequest $request){
         //dd($request->all());
 
         foreach($request->except('_token') as $key => $value){
