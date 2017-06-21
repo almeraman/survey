@@ -8,6 +8,7 @@ use App\Survey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\Array_;
 
 class SurveyController extends Controller
 {
@@ -55,13 +56,39 @@ class SurveyController extends Controller
     }
 
     public function postAnswer(Request $request){
-        //dd($request->input('answer'));
-        $answer = new Answer();
-        $answer->question_id = $request->input('question_id');
-        $answer->user_id = Auth::user()->id;
-        $answer->answer = $request->input('answer');
-        $answer->survey_id = $request->input('survey_id');
-        $answer->save();
+        //dd($request->all());
+
+        foreach($request->except('_token') as $key => $value){
+
+            $tmp = explode('_', $key);
+
+            if(count($tmp) > 2){
+                $q_id = $tmp[2];  //weird undefined offset 2 error fix
+            }
+
+            if($tmp[0] == 'answer'){
+                $ans = $value;
+                $q_id = $tmp[1];
+
+            } else {
+                $multi_array = Array();
+                for($n = 0;$n < sizeof($value);$n ++){
+                    $multi_array[] = $value[$n];
+                }
+
+                $ans = json_encode($multi_array);
+            }
+
+            $answer = new Answer();
+            $answer->question_id = $q_id;
+            $answer->user_id = Auth::user()->id;
+            $answer->answer = $ans;
+            $answer->survey_id = $request->survey_id;
+            $answer->save();
+        }
+
+        return redirect(route('my_survey'));
+
     }
 
 }
