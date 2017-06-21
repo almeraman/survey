@@ -7,6 +7,7 @@ use App\Question;
 use App\Survey;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -30,10 +31,6 @@ class HomeController extends Controller
     {
         $companies = Company::all();
         $now = Carbon::now()->format('Y-m-d H:i:s');
-
-//        foreach($companies as $company){
-//            dd($company->surveys);
-//        }
 
         return view('surveys.survey-home', compact('companies', 'now'));
     }

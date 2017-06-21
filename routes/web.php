@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index');
 Route::get('/home/my_survey', ['as' => 'my_survey', 'uses' => 'SurveyController@getMySurvey']);
 Route::get('/home/survey/{id}', ['as' => 'survey', 'uses' => 'SurveyController@getSurvey']);
 Route::post('/home/survey', ['as' => 'survey', 'uses' => 'SurveyController@postSurvey']);
+Route::get('/home/take-survey/{id}', ['as' => 'take-survey', 'uses' => 'SurveyController@getTakeSurvey']);
+Route::post('/home/answer', ['as' => 'answer', 'uses' => 'SurveyController@postAnswer']);
