@@ -11,27 +11,30 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Question <span id="q_num"> {{$count}} </span> of {{$num_questions}}</div>
+                <div class="panel panel-default" style="border-width:medium;">
+                    <div class="panel-heading" style="background-color: #3097D1; font-weight: bold">Question {{$count}} of {{$num_questions}}</div>
                     <div class="panel-body">
-                        {{--<div class="form-group{{ $errors->has('answer_'.$question->id) ? ' has-error' : '' }}">--}}
                         <h3><strong>Question:</strong></h3><h4>{{$question->label}}</h4>
+                        <div class="panel-footer" style="border: solid; border-width: thin">
                         @if($question->multi_id == null)
                             <h3><strong>Answer:</strong></h3><input type='text' id='answer' class='form-control' name='answer_{{$question->id}}'>
-                        @else
-                            <h3><strong>Answer:</strong></h3>
-                            <div>
-                                @foreach($question->multi_choice as $multi)
-                                    <label class="checkbox-inline" style="margin-right: 15px"><input type="checkbox" name="multi_answer_{{$question->id}}[]" value="{{$multi->label}}">{{$multi->label}}</label>
-                                @endforeach
-                            </div>
-                        @endif
                             @if ($errors->has('answer_'.$question->id))
                                 <span class="help-block">
                                 <strong style="color: red">{{ $errors->first('answer_'.$question->id) }}</strong>
                                 </span>
                             @endif
-                        {{--</div>--}}
+                        @else
+                            <h3><strong>Answer:</strong></h3>
+                            <div>
+                                <?php $cnt = 1; ?>
+                                @foreach($question->multi_choice as $multi)
+                                    <?php $checked = ($cnt == 1) ? 'checked="checked"' : ''; ?>
+                                        <label class="radio-inline" style="margin-right: 15px"><input type="radio" name="multi_answer_{{$question->id}}" value="{{$multi->label}}" {{$checked}}>{{$multi->label}}</label>
+                                    <?php $cnt ++; ?>
+                                @endforeach
+                            </div>
+                        @endif
+                        </div>
                     </div>
                 </div>
             </div>
