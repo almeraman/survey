@@ -10,8 +10,11 @@
         @foreach($surveys as $survey)
         <tr>
             <td><strong>{{$survey->title}}</strong> ( {{$survey->company_name}} )</td>
-            <td><a href="{{route('take-survey',['id' => $survey->id])}}" class="btn btn-md btn-primary">Take Survey</a>
-                {{--<button type="button" id="survey_{{$survey->id}}" class="btn btn-primary"></button></td>--}}
+            @if(!Auth::user()->answers->where('survey_id', $survey->id)->first())
+                <td><a href="{{route('take-survey',['id' => $survey->id])}}" class="btn btn-md btn-primary">Take Survey</a>
+            @else
+                <td><button class="btn btn-md btn-primary" disabled>Survey Taken</button>
+            @endif
         </tr>
         @endforeach
     </table>

@@ -16,7 +16,7 @@ class SurveyController extends Controller
 
     public function getMySurvey(){
         //dd(Auth::user()->surveys->first()->questions->find(4)->multi_choice);
-        //dd(Auth::user()->surveys->first()->company_id);
+        //dd(Auth::user()->answers->where('survey_id', 1));
         $surveys = Auth::user()->surveys;
         foreach($surveys as $survey){
             $survey['company_name'] = Company::find($survey->company_id)->first()->name;
