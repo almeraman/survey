@@ -23,9 +23,11 @@ class AnswersRequest extends FormRequest
      */
     public function rules()
     {
+//        dd($this->except('_token', 'survey_id'));
         foreach($this->except('_token', 'survey_id') as $key => $value) {
                 $rules[$key] = 'required';
         }
         return $rules;
     }
+
 }

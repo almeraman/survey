@@ -87,7 +87,7 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="panel panel-default">
-                        <div class="panel-heading">@yield('survey_heading')</div>
+                        <div class="panel-heading" style="background-color: #204d74; color: ghostwhite"><strong>@yield('survey_heading')</strong></div>
                         <div class="panel-body">
                             @yield('content')
                         </div>

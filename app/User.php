@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'age',
     ];
 
     /**
@@ -29,7 +29,7 @@ class User extends Authenticatable
 
     public function surveys()
     {
-        return $this->belongsToMany('App\Survey');
+        return $this->belongsToMany('App\Survey'); //many to many pivot relation
     }
 
     public function answers()

@@ -16,7 +16,12 @@ class Survey extends Model
         return $this->hasMany('App\Question');
     }
 
+    public function answers()
+    {
+        return $this->hasMany('App\Answer');
+    }
+
     public function users(){
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User'); //many to many pivot relation
     }
 }
