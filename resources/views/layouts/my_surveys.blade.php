@@ -10,7 +10,7 @@
         <th class="col-md-4">Expires</th>
         <th class="col-md-2"></th>
         </thead>
-        @foreach($surveys->where('end_date', '>=', $now) as $survey)    
+        @foreach($surveys->where('end_date', '>=', $now) as $survey)
             <tr>
             @if(!Auth::user()->answers->where('survey_id', $survey->id)->first())
                 <td><strong>{{$survey->title}}</strong> ( {{$survey->companies->first()->name}} )</td>

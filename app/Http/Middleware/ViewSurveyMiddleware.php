@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
-class CheckSurveyInputs
+class ViewSurveyMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,6 +16,12 @@ class CheckSurveyInputs
      */
     public function handle($request, Closure $next)
     {
+        //dd(Auth::user()->surveys->find($request->id));
+        if(!Auth::user()->surveys->find($request->id)){
+            Auth::logout();
+            return redirect('/login');
+        }
+
         return $next($request);
     }
 }
