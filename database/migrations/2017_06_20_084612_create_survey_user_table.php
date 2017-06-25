@@ -17,7 +17,7 @@ class CreateSurveyUserTable extends Migration
             $table->increments('id');
             $table->integer('survey_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

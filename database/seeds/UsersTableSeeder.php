@@ -11,15 +11,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $now = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
-
         DB::table('users')->insert([
             'name' => 'david',
             'email' => 'david.alan.oneill@gmail.com',
             'password' => bcrypt('password'),
             'age' => '35',
-            'created_at' => $now,
-            'updated_at' => $now,
         ]);
     }
 }

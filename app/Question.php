@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
+    public $timestamps = true;
+
     protected $fillable = [
-        'label',
+        'label', 'survey_id', 'has_multi',
     ];
 
     public function multi_choice()

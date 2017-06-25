@@ -11,35 +11,66 @@ class QuestionsTableSeeder extends Seeder
      */
     public function run()
     {
-        $now = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
 
         DB::table('questions')->insert([
             'survey_id' => 1,
             'label' => 'Question 1',
-            'created_at' => $now,
-            'updated_at' => $now,
+            'has_multi' => 0,
         ]);
 
         DB::table('questions')->insert([
             'survey_id' => 1,
             'label' => 'Question 2',
-            'created_at' => $now,
-            'updated_at' => $now,
+            'has_multi' => 0,
         ]);
 
         DB::table('questions')->insert([
             'survey_id' => 1,
             'label' => 'Question 3',
-            'created_at' => $now,
-            'updated_at' => $now,
+            'has_multi' => 0,
         ]);
 
         DB::table('questions')->insert([
             'survey_id' => 1,
             'label' => 'Question 4',
-            'multi_id' => 1,
-            'created_at' => $now,
-            'updated_at' => $now,
+            'has_multi' => 1,
         ]);
+
+        DB::table('questions')->insert([
+            'survey_id' => 2,
+            'label' => 'What do you think about bla 1',
+            'has_multi' => 1,
+        ]);
+
+        DB::table('questions')->insert([
+            'survey_id' => 2,
+            'label' => 'What do you think about bla 2',
+            'has_multi' => 1,
+        ]);
+
+        DB::table('questions')->insert([
+            'survey_id' => 2,
+            'label' => 'What do you think about bla 3',
+            'has_multi' => 1,
+        ]);
+
+        DB::table('questions')->insert([
+            'survey_id' => 2,
+            'label' => 'What do you think about bla 4',
+            'has_multi' => 1,
+        ]);
+
+        DB::table('questions')->insert([
+            'survey_id' => 2,
+            'label' => 'Would you buy bla again',
+            'has_multi' => 0,
+        ]);
+
+        DB::table('questions')->insert([
+            'survey_id' => 2,
+            'label' => 'How can we improve bla',
+            'has_multi' => 0,
+        ]);
+
     }
 }

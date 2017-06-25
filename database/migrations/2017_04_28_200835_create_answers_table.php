@@ -19,7 +19,7 @@ class CreateAnswersTable extends Migration
             $table->integer('question_id');
             $table->integer('survey_id');
             $table->text('answer');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

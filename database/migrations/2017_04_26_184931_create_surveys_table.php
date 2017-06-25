@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Carbon\Carbon;
 
 class CreateSurveysTable extends Migration
 {
@@ -17,11 +18,12 @@ class CreateSurveysTable extends Migration
             $table->increments('id');
             $table->integer('company_id');
             $table->string('title');
-            $table->integer('age_range_min')->nullable();
-            $table->integer('age_range_max')->nullable();
-            $table->timestamp('start_date')->nullable();
-            $table->timestamp('end_date')->nullable();
-            $table->timestamps();
+            $table->integer('age_range_min');
+            $table->integer('age_range_max');
+            $table->timestamp('start_date')->useCurrent();
+            $table->timestamp('end_date')->default(Carbon::now()->addMonths(2));
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

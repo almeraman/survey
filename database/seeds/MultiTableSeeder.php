@@ -16,22 +16,56 @@ class MultiTableSeeder extends Seeder
         DB::table('multi_choices')->insert([
             'question_id' => 4,
             'label' => 'option 1',
-            'created_at' => $now,
-            'updated_at' => $now,
         ]);
 
         DB::table('multi_choices')->insert([
             'question_id' => 4,
             'label' => 'option 2',
-            'created_at' => $now,
-            'updated_at' => $now,
         ]);
 
         DB::table('multi_choices')->insert([
             'question_id' => 4,
             'label' => 'option 3',
-            'created_at' => $now,
-            'updated_at' => $now,
+        ]);
+
+        DB::table('multi_choices')->insert([
+            'question_id' => 5,
+            'label' => 'Yes',
+        ]);
+
+        DB::table('multi_choices')->insert([
+            'question_id' => 5,
+            'label' => 'No',
+        ]);
+
+        DB::table('multi_choices')->insert([
+            'question_id' => 6,
+            'label' => 'Yes',
+        ]);
+
+        DB::table('multi_choices')->insert([
+            'question_id' => 6,
+            'label' => 'No',
+        ]);
+
+        DB::table('multi_choices')->insert([
+            'question_id' => 7,
+            'label' => 'Yes',
+        ]);
+
+        DB::table('multi_choices')->insert([
+            'question_id' => 7,
+            'label' => 'No',
+        ]);
+
+        DB::table('multi_choices')->insert([
+            'question_id' => 8,
+            'label' => 'Yes',
+        ]);
+
+        DB::table('multi_choices')->insert([
+            'question_id' => 8,
+            'label' => 'No',
         ]);
     }
 }

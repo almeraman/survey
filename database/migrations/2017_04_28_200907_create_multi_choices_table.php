@@ -17,7 +17,7 @@ class CreateMultiChoicesTable extends Migration
             $table->increments('id');
             $table->integer('question_id');
             $table->string('label');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

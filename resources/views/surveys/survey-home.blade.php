@@ -4,13 +4,23 @@
 
 @section('content')
     @foreach($companies as $company)
-        @if($company->surveys->first()->end_date > $now)
+        @if($company->surveys->first()->end_date >= $now)
             <h4><strong>{{$company->name}}</strong></h4>
-            <ul>
+            <table class="table table-bordered table-responsive">
+                <thead>
+                <tr>
+                    <th class="col-md-4">Survey Name</th>
+                    <th class="col-md-3">Expires</th>
+                    <th class="col-md-4"></th>
+                </tr>
+                </thead>
             @foreach($company->surveys as $survey)
+                <tr>
                 @if(!Auth::user()->surveys->find($survey->id))
-                    @if(Auth::user()->age > $survey->age_range_min && Auth::user()->age < $survey->age_range_max)
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal_{{$survey->id}}">{{$survey->title}}</button>
+                    @if(Auth::user()->age >= $survey->age_range_min && Auth::user()->age <= $survey->age_range_max)
+                            <td>{{$survey->title}}</td>
+                            <td> {{date('F d, Y \a\t h:i:s A', strtotime($survey->end_date))}}</td>
+                            <td><button type="button" id="survey_button_{{$survey->id}}" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal_{{$survey->id}}">Take Survey</button></td>
 
                             <div id="myModal_{{$survey->id}}" class="modal fade" role="dialog">
                                 <div class="modal-dialog">
@@ -33,11 +43,13 @@
                         <p>No surveys open at this time</p>
                     @endif
                 @else
-                        <button type="button" class="btn btn-primary" disabled>{{$survey->title}}</button>
+                        <td>{{$survey->title}}</td>
+                        <td> {{date('F d, Y \a\t h:i:s A', strtotime($survey->end_date))}}</td>
+                        <td><button type="button" class="btn btn-primary pull-right" disabled>Added to My Surveys</button></td>
                 @endif
+                </tr>
             @endforeach
-        </ul>
-        <hr>
+        </table>
         @endif
     @endforeach
     {{--<a href="{{ route('survey-coke') }}">Coke</a>--}}
@@ -53,11 +65,11 @@
                 "_token": "{{ csrf_token() }}",
                 "id": id
             },
-            success: function(data) {
-
+            success: function() {
+                $('#survey_button_'+id).attr('disabled', true).html('Added to My Surveys');
             },
-            error: function(data){
-                alert("fail");
+            error: function(){
+                alert("Something went wrong, please try again.");
             }
         });
     }

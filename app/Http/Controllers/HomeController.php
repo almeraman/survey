@@ -30,7 +30,7 @@ class HomeController extends Controller
     public function index()
     {
         $companies = Company::all();
-        $now = Carbon::now()->format('Y-m-d H:i:s');
+        $now = Carbon::now();
 
         return view('surveys.survey-home', compact('companies', 'now'));
     }

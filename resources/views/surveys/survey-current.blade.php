@@ -16,7 +16,7 @@
                     <div class="panel-body">
                         <h3><strong>Question:</strong></h3><h4>{{$question->label}}</h4>
                         <div class="panel-footer" style="border: solid; border-width: thin">
-                        @if($question->multi_id == null)
+                        @if(!$question->has_multi)
                             <h3><strong>Answer:</strong></h3><input type='text' id='answer' class='form-control' name='answer_{{$question->id}}' value='{{old("answer_".$question->id)}}' required>
                             @if ($errors->has('answer_'.$question->id))
                                 <span class="help-block">

@@ -17,8 +17,9 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->integer('survey_id');
             $table->string('label');
-            $table->string('multi_id')->nullable();
-            $table->timestamps();
+            $table->boolean('has_multi');
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
     }
 

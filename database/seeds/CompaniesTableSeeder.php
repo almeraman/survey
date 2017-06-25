@@ -11,13 +11,15 @@ class CompaniesTableSeeder extends Seeder
      */
     public function run()
     {
-        $now = \Carbon\Carbon::now()->format('Y-m-d H:i:s');
 
         DB::table('companies')->insert([
             'name' => 'Coke A Cola',
             'address' => 'Dublin',
-            'created_at' => $now,
-            'updated_at' => $now,
+        ]);
+
+        DB::table('companies')->insert([
+            'name' => 'Tesco',
+            'address' => 'Dublin 1',
         ]);
     }
 }

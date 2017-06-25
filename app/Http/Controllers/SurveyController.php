@@ -7,9 +7,8 @@ use App\Company;
 use App\Survey;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Expr\Array_;
 use App\Http\Requests\AnswersRequest;
+use Carbon\Carbon;
 
 class SurveyController extends Controller
 {
@@ -18,11 +17,15 @@ class SurveyController extends Controller
         //dd(Auth::user()->surveys->first()->questions->find(4)->multi_choice);
         //dd(Auth::user()->answers->where('survey_id', 1));
         $surveys = Auth::user()->surveys;
-        foreach($surveys as $survey){
-            $survey['company_name'] = Company::find($survey->company_id)->first()->name;
-        }
+        //foreach($surveys as $survey){
+            //dd($survey->companies->first()->name);
+            //dd(Company::find($survey->company_id)->first()->name);
+          //  $survey['company_name'] = Company::find($survey->company_id)->first()->name;
+        //}
         $companies = Company::all();
-        return view('layouts.my_surveys', compact('surveys', 'companies'));
+        $now = Carbon::now();
+
+        return view('layouts.my_surveys', compact('surveys', 'companies', 'now'));
     }
 
 //    public function getSurvey(Request $request){
