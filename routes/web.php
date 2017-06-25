@@ -24,6 +24,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home/survey/{id}', ['as' => 'survey', 'uses' => 'SurveyController@getSurvey']);
     Route::post('/home/survey', ['as' => 'survey', 'uses' => 'SurveyController@postSurvey']);
     Route::get('/home/take-survey/{id}', ['as' => 'take-survey', 'middleware' => 'view_survey', 'uses' => 'SurveyController@getTakeSurvey']);
-    Route::post('/home/answer', ['as' => 'answer', 'middleware' => 'answer', 'uses' => 'SurveyController@postAnswer']);
+    Route::post('/home/answer', ['as' => 'answer', 'uses' => 'SurveyController@postAnswer']);
 
 });
