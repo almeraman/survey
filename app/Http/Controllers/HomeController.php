@@ -34,4 +34,12 @@ class HomeController extends Controller
 
         return view('surveys.survey-home', compact('companies', 'now'));
     }
+
+    public function getAccount(){
+
+        $user = Auth::user();
+
+        return view('layouts.my_account', compact('user'));
+
+    }
 }

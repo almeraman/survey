@@ -16,6 +16,7 @@ class SurveysTableSeeder extends Seeder
         DB::table('surveys')->insert([
             'company_id' => 1,
             'title' => 'Favorite new flavour',
+            'value' => 12.50,
             'age_range_min' => 16,
             'age_range_max' => 50,
         ]);
@@ -23,6 +24,7 @@ class SurveysTableSeeder extends Seeder
         DB::table('surveys')->insert([
             'company_id' => 2,
             'title' => 'Our new own brand',
+            'value' => 9.99,
             'age_range_min' => 30,
             'age_range_max' => 70,
         ]);

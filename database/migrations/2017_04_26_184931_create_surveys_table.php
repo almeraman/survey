@@ -20,6 +20,7 @@ class CreateSurveysTable extends Migration
             $table->string('title');
             $table->integer('age_range_min');
             $table->integer('age_range_max');
+            $table->float('value');
             $table->timestamp('start_date')->useCurrent();
             $table->timestamp('end_date')->default(Carbon::now()->addMonths(2));
             $table->timestamp('created_at')->useCurrent();

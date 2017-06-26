@@ -10,7 +10,7 @@ class Survey extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'company_id', 'title', 'age_range_min', 'age_rage_max', 'start_date', 'end_date',
+        'company_id', 'title', 'age_range_min', 'age_rage_max', 'start_date', 'end_date', 'value',
     ];
 
     public function questions()

@@ -74,16 +74,23 @@ class SurveyController extends Controller
             }
 
             $answer_array [] = array('question_id' => $q_id, 'user_id' => $user_id, 'answer' => $ans, 'survey_id' => $request->survey_id);
-//            $answer = new Answer();
-//            $answer->question_id = $q_id;
-//            $answer->user_id = Auth::user()->id;
-//            $answer->answer = $ans;
-//            $answer->survey_id = $request->survey_id;
-//            $answer->save();
         }
-        Answer::insert($answer_array);
-        return redirect(route('my_survey'));
 
+        Answer::insert($answer_array);
+
+        Auth::user()->surveys()->updateExistingPivot(
+            $request->survey_id,
+            ['complete' => 1, 'updated_at' => Carbon::now()],
+            true);
+
+        return redirect(route('my_survey'));
+    }
+
+    public function postBalance(){
+        $user = Auth::user();
+        $user->total = $user->total + $user->balance;
+        $user->balance = 0;
+        $user->save();
     }
 
 }
