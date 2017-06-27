@@ -23,6 +23,11 @@ class Survey extends Model
         return $this->hasMany('App\Answer');
     }
 
+    public function onceAnswers()
+    {
+        return $this->hasMany('App\OnceAnswer');
+    }
+
     public function users()
     {
         return $this->belongsToMany('App\User'); //many to many pivot relation

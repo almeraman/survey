@@ -58,5 +58,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'view_survey' => \App\Http\Middleware\ViewSurveyMiddleware::class,
+        'valid_survey' => \App\Http\Middleware\ValidSurveyMiddleware::class,
     ];
 }

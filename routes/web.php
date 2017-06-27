@@ -29,3 +29,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/home/post-balance', ['as' => 'post-balance', 'uses' => 'SurveyController@postBalance']);
 
 });
+
+Route::get('/SuperSurvey/once_off/{survey_id}', ['as' => 'once_off', 'middleware' => 'valid_survey', 'uses' => 'OnceOffController@getOnceOff']);
+Route::post('/SuperSurvey/once_off/answer', ['as' => 'once_answer', 'uses' => 'OnceOffController@postOnceAnswer']);
+Route::get('/SuperSurvey/thank_you', ['as' => 'thank_you', 'uses' => 'OnceOffController@getThankYou']);
+Route::get('/SuperSurvey/not_valid', ['as' => 'not_valid', 'uses' => 'OnceOffController@getNotValid']);
